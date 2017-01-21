@@ -1,11 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{ appName }}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  Welcome to this
-  <ion-icon name="ionic" color="primary"></ion-icon>
-  <strong ion-text color="primary">{{ appName }}</strong>.
+    <h1>Canvas pencil, undo, redo</h1>
+    <div #colors>
+        <button ion-button class="color" (tap)="changeColor('red')">Red</button>
+        <button ion-button class="color" (tap)="changeColor('blue')">Blue</button>
+        <button ion-button class="color" (tap)="changeColor('green')">Green</button>
+        <button ion-button class="color" (tap)="changeColor('black')">Black</button>
+    </div>
+    <div #widths>
+        <button ion-button class="width" (tap)="changeWidth(1)">1</button>
+        <button ion-button class="width" (tap)="changeWidth(5)">5</button>
+        <button ion-button class="width" (tap)="changeWidth(10)">10</button>
+    </div>
+    <button ion-button (click)="changeOpacity('.2')">transparent</button>
+    <canvas #sheet width="600" height="400" (mousemove)="draw($event)" (mouseup)="stopDraw($event)"
+            (mousedown)="startDraw($event)"></canvas>
+
+    <button ion-button outline (click)="resetAll()">Reset</button>
+    <button ion-button (click)="drawLineAnimated()">Draw Animated</button>
+    <button ion-button (click)="drawLine()">Draw</button>
+    <button ion-button (click)="drawAll()">Draw all</button>
 </ion-content>
