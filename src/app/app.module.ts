@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { AppComponent } from './app.component';
 import { HomePage } from './pages/home.page';
+import { DrawPage } from './pages/draw.page';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { HomePage } from './pages/home.page';
   ],
   declarations: [
     AppComponent,
-    HomePage
+    HomePage,
+    DrawPage
   ],
   entryComponents: [
     AppComponent,
-    HomePage    
+    HomePage,
+    DrawPage
   ],
   bootstrap: [IonicApp]
 })

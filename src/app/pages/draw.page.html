@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ word }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+    <div #options>
+        <button ion-button class="color color--red" (tap)="changeColor('red')">Red</button>
+        <button ion-button class="color color--blue" (tap)="changeColor('blue')">Blue</button>
+        <button ion-button class="color color--green" (tap)="changeColor('green')">Green</button>
+        <button ion-button class="color color--black" (tap)="changeColor('black')">Black</button>
+        <button ion-button class="width" (tap)="changeWidth(1)">1</button>
+        <button ion-button class="width" (tap)="changeWidth(5)">5</button>
+        <button ion-button class="width" (tap)="changeWidth(10)">10</button>
+        <button ion-button (click)="changeOpacity('.2')">transparent</button>
+    </div>
+
+    <canvas #sheet width="100%" height="100%" (touchmove)="draw($event)" (touchend)="stopDraw($event)"
+            (touchstart)="startDraw($event)"></canvas>
+
+    <button ion-button outline (click)="resetAll()">Reset</button>
+    <button ion-button (click)="drawLine()">Draw</button>
+    <button ion-button (click)="drawAll()">Draw all</button>
+    <button ion-button (click)="drawLineAnimated()">Draw Animated</button>
+    <button ion-button (click)="drawAllAnimated()">Draw all animated</button>
+    <button ion-button (click)="undo()" icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button ion-button (click)="redo()" icon-only>
+        <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+</ion-content>

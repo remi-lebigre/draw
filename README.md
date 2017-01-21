@@ -1,3 +1,12 @@
+# TODO
+- save line color
+- save transparent line, and draw it once
+- draw all animated
+- categories
+- shuffle letters
+- events
+ -mousemove, mouseend, mousestart -> tap, pan ?
+
 # Ionic 2 Webpack Starter
 
 Ionic 2 starter project using Webpack 2 and [@ngtools/webpack](https://github.com/angular/angular-cli/tree/master/packages/webpack) for AoT template compilation.

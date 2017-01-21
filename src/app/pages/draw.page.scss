@@ -1,0 +1,25 @@
+ion-content {
+  text-align: center;
+}
+
+canvas {
+  box-sizing: border-box;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  background: #fff;
+}
+
+.color {
+  &--red {
+    background-color: red;
+  }
+  &--green {
+    background-color: green;
+  }
+  &--blue {
+    background-color: blue;
+  }
+  &--black {
+    background-color: black;
+  }
+}
