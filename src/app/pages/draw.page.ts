@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, NavParams, Platform} from 'ionic-angular';
+import {NavController, NavParams, Platform, ModalController} from 'ionic-angular';
+import {ColorPage} from './color.page';
 
 @Component({
     templateUrl: 'draw.page.html',
@@ -35,7 +36,7 @@ export class DrawPage {
     sheet;
     private canvas:any;
 
-    constructor(private navCtrl:NavController, navParams:NavParams, private platform:Platform) {
+    constructor(public modalCtrl:ModalController, private navCtrl:NavController, navParams:NavParams, private platform:Platform) {
         this.word = `Draw me le ${navParams.get('word')}`;
 
         platform.ready().then(_=> {
@@ -219,5 +220,14 @@ export class DrawPage {
         this.lines.push(this.linesUndone.pop());
         this.resetAll();
         this.drawAll();
+    }
+
+    showColorSelect() {
+        let modal = this.modalCtrl.create(ColorPage, {colors: Object.keys(this.colors)});
+        modal.onDidDismiss(color => {
+            console.log('color:', color);
+            this.changeColor(color);
+        });
+        modal.present();
     }
 }

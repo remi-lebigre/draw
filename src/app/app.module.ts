@@ -3,6 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { AppComponent } from './app.component';
 import { HomePage } from './pages/home.page';
 import { DrawPage } from './pages/draw.page';
+import { ColorPage } from './pages/color.page';
 
 @NgModule({
   imports: [
@@ -11,12 +12,14 @@ import { DrawPage } from './pages/draw.page';
   declarations: [
     AppComponent,
     HomePage,
-    DrawPage
+    DrawPage,
+    ColorPage
   ],
   entryComponents: [
     AppComponent,
     HomePage,
-    DrawPage
+    DrawPage,
+    ColorPage
   ],
   bootstrap: [IonicApp]
 })

@@ -6,10 +6,7 @@
 
 <ion-content no-bounce>
     <div #options>
-        <button ion-button class="color color--red" (tap)="changeColor('red')">Red</button>
-        <button ion-button class="color color--blue" (tap)="changeColor('blue')">Blue</button>
-        <button ion-button class="color color--green" (tap)="changeColor('green')">Green</button>
-        <button ion-button class="color color--black" (tap)="changeColor('black')">Black</button>
+        <button ion-button (click)="showColorSelect()">Couleur</button>
         <button ion-button class="width" (tap)="changeWidth(1)">1</button>
         <button ion-button class="width" (tap)="changeWidth(5)">5</button>
         <button ion-button class="width" (tap)="changeWidth(10)">10</button>
