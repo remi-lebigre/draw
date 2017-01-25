@@ -16,4 +16,7 @@ export class HomePage {
     startDraw(word) {
         this.navCtrl.push(DrawPage, {word: word});
     }
+    startGuess(word) {
+        this.navCtrl.push(DrawPage, {guess: word});
+    }
 }

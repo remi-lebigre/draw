@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HomePage } from './pages/home.page';
 import { DrawPage } from './pages/draw.page';
 import { ColorPage } from './pages/color.page';
+import { SizePage } from './pages/size.page';
 
 @NgModule({
   imports: [
@@ -13,13 +14,15 @@ import { ColorPage } from './pages/color.page';
     AppComponent,
     HomePage,
     DrawPage,
-    ColorPage
+    ColorPage,
+    SizePage
   ],
   entryComponents: [
     AppComponent,
     HomePage,
     DrawPage,
-    ColorPage
+    ColorPage,
+    SizePage
   ],
   bootstrap: [IonicApp]
 })

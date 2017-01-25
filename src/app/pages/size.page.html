@@ -1,0 +1,9 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button *ngFor="let size of sizes;" (click)="choseSize(size)" [ngClass]="'size size--'+size">{{size}}</button>
+</ion-content>
