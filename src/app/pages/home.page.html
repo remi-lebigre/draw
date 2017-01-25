@@ -5,18 +5,21 @@
 </ion-header>
 
 <ion-content padding>
-    <h1>Choisir un mot</h1>
-
-    <button ion-button round full (click)="startDraw('pizza')">Pizza</button>
-    <button ion-button round full (click)="startDraw('chaise')">Chaise</button>
-    <button ion-button round full (click)="startDraw('taupiqueur')">Taupiqueur</button>
-
     <ion-card>
         <ion-card-header>
-            Choisis un mot à faire deviner à un ami
+            Bienvenue {{user}} :)
         </ion-card-header>
     </ion-card>
-    <h1>Deviner un mot</h1>
 
-    <button ion-button icon-only (click)="startGuess('pizza')"><ion-icon name="ios-glasses-outline"></ion-icon></button>
+    <h1>Choisis un mot</h1>
+    <button *ngFor="let word of wordsToGuess;" ion-button round full (click)="startDraw(word.word)">{{word.word}}
+    </button>
+
+    <h1>Ou une catégorie</h1>
+    <button ion-button round full color="secondary" (click)="modalWordsFromCategory()">{{categoryToGuess.name}}</button>
+
+    <h1>Devine un mot</h1>
+    <button ion-button icon-only (click)="startGuess('pizza')">
+        <ion-icon name="ios-glasses-outline"></ion-icon>
+    </button>
 </ion-content>

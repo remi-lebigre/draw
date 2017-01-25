@@ -262,7 +262,8 @@ export class DrawPage {
         let modal = this.modalCtrl.create(ColorPage, {colors: Object.keys(this.colors)});
         modal.onDidDismiss(color => {
             console.log('color:', color);
-            this.changeColor(color);
+            if (color)
+                this.changeColor(color);
         });
         modal.present();
     }
@@ -271,7 +272,8 @@ export class DrawPage {
         let modal = this.modalCtrl.create(SizePage, {sizes: this.sizes});
         modal.onDidDismiss(size => {
             console.log('size:', size);
-            this.changeSize(size);
+            if (size)
+                this.changeSize(size);
         });
         modal.present();
     }

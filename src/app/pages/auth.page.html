@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Pseudo</ion-label>
+            <ion-input type="text" [(ngModel)]="pseudo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Mot de passe</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+
+        <button ion-button round full (click)="connect()">Draw le me !</button>
+    </ion-list>
+</ion-content>
