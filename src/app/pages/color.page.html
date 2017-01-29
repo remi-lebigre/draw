@@ -6,4 +6,6 @@
 
 <ion-content padding>
     <button ion-button *ngFor="let color of colors;" (click)="choseColor(color)" [ngClass]="'color color--'+color">{{color}}</button>
+    <br>
+    <button ion-button color="danger" (click)="viewCtrl.dismiss()">Annuler</button>
 </ion-content>

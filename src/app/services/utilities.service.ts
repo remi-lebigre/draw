@@ -21,6 +21,14 @@ export class Utilities {
 
         return array;
     }
+
+    public shuffleWordAndAlphabet(word, maxLength) {
+        let shuffledAlphabet = this.shuffle('abcdefghijklmnopqrstuvwxyz'.split(''));
+        let shuffledWord = this.shuffle(word.split(''));
+        let numberToPick = maxLength - word.length;
+        let pickedLetters = shuffledAlphabet.splice(0, numberToPick);
+        return this.shuffle(pickedLetters.concat(shuffledWord));
+    }
 }
 
 
