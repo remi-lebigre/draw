@@ -30,7 +30,7 @@ export class DrawPage {
     private opacity: number = 1;
     private loop: number = 0;
     private lineWidth: number = 10;
-    private maxGuessLetters: number = 12;
+    private maxGuessLetters: number = 10;
     private colors: any = {
         red: ['255', '0', '0'],
         green: ['0', '255', '0'],
@@ -41,6 +41,8 @@ export class DrawPage {
     private lineToDraw: any = {};
     private canvas: any;
     private letters: any = [];
+    private answer: any = [];
+    private selectedLetters: any = [];
     private pizza: any = [{
         "coords": [[183, 2], [181, 3], [179, 3], [177, 4], [169, 8], [152, 24], [133, 50], [121, 74], [113, 97], [111, 116], [111, 132], [111, 143], [111, 154], [116, 166], [125, 176], [152, 191], [178, 198], [209, 204], [231, 206], [250, 207], [259, 207], [273, 206], [282, 198], [290, 186], [296, 164], [300, 136], [301, 111], [301, 100], [291, 87], [281, 80], [266, 74], [248, 68], [222, 58], [207, 53], [193, 49], [185, 47], [179, 47], [177, 47], [173, 47]],
         "color": "red",
@@ -54,7 +56,7 @@ export class DrawPage {
     }];
     @ViewChild('sheet') sheet;
 
-    constructor(private _: Utilities, private alertCtrl: AlertController, public modalCtrl: ModalController, private navCtrl: NavController, navParams: NavParams, private platform: Platform) {
+    constructor(private _: Utilities, private alertCtrl: AlertController, public modalCtrl: ModalController, navParams: NavParams, private platform: Platform) {
         this.currentWord = navParams.get('word');
 
         platform.ready().then(_ => {
@@ -283,9 +285,8 @@ export class DrawPage {
         modal.present();
     }
 
-    checkAnswer(answer: string) {
-        console.log('answer', answer);
-        if (answer === this.currentWord) {
+    checkAnswer() {
+        if (this.answer === this.currentWord) {
             let alert = this.alertCtrl.create({
                 title: 'Bravo!',
                 subTitle: 'Vous avez deviné le mot de machin !',
@@ -302,5 +303,24 @@ export class DrawPage {
 
     getLetters() {
         this.letters = this._.shuffleWordAndAlphabet(this.currentWord, this.maxGuessLetters);
+    }
+
+    selectLetter(i: number) {
+
+        let letterPosition = this.selectedLetters.indexOf(i);
+        if (letterPosition < 0) {
+            if (this.selectedLetters.length >= this.currentWord.length) return false;
+            this.selectedLetters.push(i);
+        } else {
+            this.selectedLetters.splice(letterPosition, 1);
+        }
+        this.answer = this.selectedLetters.map(e => {
+            return this.letters[e];
+        }).join('');
+        this.checkAnswer();
+    }
+
+    isLetterSelected(i: number) {
+        return this.selectedLetters.indexOf(i) >= 0;
     }
 }

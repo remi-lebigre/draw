@@ -23,7 +23,9 @@
     </div>
 
     <ion-fab top right edge *ngIf="isGuess">
-        <button ion-fab mini (click)="reDrawAllAnimated()"><ion-icon name="ios-refresh-outline"></ion-icon></button>
+        <button ion-fab mini (click)="reDrawAllAnimated()">
+            <ion-icon name="ios-refresh-outline"></ion-icon>
+        </button>
     </ion-fab>
 
     <canvas #sheet width="100%" height="100%"
@@ -38,11 +40,15 @@
     <ion-card *ngIf="isGuess">
         <ion-card-content>
             <ion-item>
-                <button ion-button *ngFor="let letter of letters;" outline>{{letter}}</button>
+                <ion-row wrap>
+                    <ion-col width-20 *ngFor="let letter of letters; let i =index;">
+                        <button ion-button outline class="letter" [color]="isLetterSelected(i) ? 'light' : 'primary'" (click)="selectLetter(i)">{{letter}}</button>
+                    </ion-col>
+                </ion-row>
             </ion-item>
             <ion-item>
-                <ion-label inline>Réponse</ion-label>
-                <ion-input type="text" (input)="checkAnswer($event.target.value)"></ion-input>
+                <ion-label inline>Réponse ({{selectedLetters.length}}/{{currentWord.length}})</ion-label>
+                <ion-input class="answer" [(ngModel)]="answer" disabled="true" type="text"></ion-input>
             </ion-item>
         </ion-card-content>
     </ion-card>
